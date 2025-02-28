@@ -34,8 +34,19 @@ public class TankPlayerController : MonoBehaviour //a monobehavior is a script t
         transform.Translate(Vector2.right * speed * Time.deltaTime * verticalInput);
 
         //rotate player with horizontal input
-        transform.Rotate(Vector3.forward, turnSpeed * Time.deltaTime * horizontalInput);
+        // transform.Rotate(Vector3.forward, turnSpeed * Time.deltaTime * horizontalInput);
         /////////////////axis were rotating about,   float angel
+
+
+        //rotate palyer with the horizontal input
+        //but reverse the orientation direction when moving backwards
+        if (verticalInput < 0)
+        {
+            transform.Rotate(Vector3.back, -turnSpeed * Time.deltaTime * horizontalInput);
+        }
+        else {
+            transform.Rotate(Vector3.back, turnSpeed * Time.deltaTime * horizontalInput);
+        }
 
         //Move player side-to-side with horizontal input
         //transform.Translate(Vector2.right * turnSpeed * Time.deltaTime * horizontalInput);
